@@ -1,0 +1,25 @@
+<div class="container" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutAlign.gt-md="space-around center"
+fxLayoutGap="10px"> 
+
+  <div fxFlex>
+    <mat-card *ngFor="let repo of repos.items" >
+      
+      <img fxFlex="13.7" fxFlex.xs="0" mat-card-image src={{repo.owner.avatar_url}} />
+        
+      <mat-card-content fxFlexOffset="4">
+        <h2 mat-line >{{ repo.name }}</h2>
+        <h4 mat-line>{{ repo.description }}</h4>
+        <p>Stars: {{ repo.stargazers_count }}</p>
+        <p>issues: {{ repo.open_issues }}</p>
+        <span>Created {{ repo.created_at | date }} by {{ repo.owner.login }}</span>
+      </mat-card-content>
+
+    </mat-card>
+    <mat-progress-spinner></mat-progress-spinner>
+    <div *ngIf="repoErrMsg">
+        <h2>Error</h2>
+        <h4>{{ repoErrMsg }}</h4>
+      </div>
+  </div>
+  
+</div>
